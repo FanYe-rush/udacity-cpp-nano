@@ -12,9 +12,10 @@
 ChatBot::ChatBot()
 {
     // invalidate data handles
-    _image = nullptr;
+    _image = NULL;
     _chatLogic = nullptr;
     _rootNode = nullptr;
+    _currentNode = nullptr;
 }
 
 // constructor WITH memory allocation
@@ -25,6 +26,7 @@ ChatBot::ChatBot(std::string filename)
     // invalidate data handles
     _chatLogic = nullptr;
     _rootNode = nullptr;
+    _currentNode = nullptr;
 
     // load image into heap memory
     _image = new wxBitmap(filename, wxBITMAP_TYPE_PNG);
@@ -42,11 +44,50 @@ ChatBot::~ChatBot()
     }
 }
 
-//// STUDENT CODE
-////
+ChatBot::ChatBot(ChatBot &&other) {
+    std::cout << "Chat bot move constructor" << std::endl;
 
-////
-//// EOF STUDENT CODE
+    if (this == &other) {
+        return;
+    }
+
+    _chatLogic = other._chatLogic;
+    _chatLogic->SetChatbotHandle(this);
+    _rootNode = other._rootNode;
+    _currentNode = other._currentNode;
+    _image = other._image;
+
+    other._chatLogic = nullptr;
+    other._rootNode = nullptr;
+    other._currentNode = nullptr;
+    other._image = NULL;
+}
+
+ChatBot &ChatBot::operator=(ChatBot &&other) {
+    std::cout << "Chat bot move assignment" << std::endl;
+
+    if (this == &other) {
+        return *this;
+    }
+
+    if (_image != NULL) {
+        delete _image;
+        _image = NULL;
+    }
+
+    _chatLogic = other._chatLogic;
+    _chatLogic->SetChatbotHandle(this);
+    _rootNode = other._rootNode;
+    _currentNode = other._currentNode;
+    _image = other._image;
+
+    other._chatLogic = nullptr;
+    other._rootNode = nullptr;
+    other._currentNode = nullptr;
+    other._image = NULL;
+
+    return *this;
+}
 
 void ChatBot::ReceiveMessageFromUser(std::string message)
 {
