@@ -89,6 +89,41 @@ ChatBot &ChatBot::operator=(ChatBot &&other) {
     return *this;
 }
 
+ChatBot::ChatBot(ChatBot &other) {
+    std::cout << "Chat bot copy constructor" << std::endl;
+
+    if (this == &other) {
+        return;
+    }
+
+    _chatLogic = other._chatLogic;
+    _chatLogic->SetChatbotHandle(this);
+    _rootNode = other._rootNode;
+
+    _image = new wxBitmap(*other._image);
+}
+
+ChatBot &ChatBot::operator=(ChatBot &other) {
+    std::cout << "Chat bot copy assignment" << std::endl;
+
+    if (this == &other) {
+        return *this;
+    }
+
+    if (_image != NULL) {
+        delete _image;
+        _image = NULL;
+    }
+
+    _chatLogic = other._chatLogic;
+    _chatLogic->SetChatbotHandle(this);
+    _rootNode = other._rootNode;
+    
+    _image = new wxBitmap(*other._image);
+
+    return *this;
+}
+
 void ChatBot::ReceiveMessageFromUser(std::string message)
 {
     // loop over all edges and keywords and compute Levenshtein distance to query

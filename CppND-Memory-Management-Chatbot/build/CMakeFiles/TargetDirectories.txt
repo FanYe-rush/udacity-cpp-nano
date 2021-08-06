@@ -1,0 +1,3 @@
+/Users/fanye/WorkSpace/Udacity/cpp-nano/projs/CppND-Memory-Management-Chatbot/build/CMakeFiles/rebuild_cache.dir
+/Users/fanye/WorkSpace/Udacity/cpp-nano/projs/CppND-Memory-Management-Chatbot/build/CMakeFiles/edit_cache.dir
+/Users/fanye/WorkSpace/Udacity/cpp-nano/projs/CppND-Memory-Management-Chatbot/build/CMakeFiles/membot.dir

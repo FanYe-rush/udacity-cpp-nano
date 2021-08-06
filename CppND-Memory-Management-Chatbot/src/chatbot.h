@@ -32,8 +32,8 @@ public:
     ChatBot &operator=(ChatBot &&other);
 
     // Copy
-    ChatBot(const ChatBot &other) = delete;
-    ChatBot operator=(const ChatBot &other) = delete;
+    ChatBot(ChatBot &other);
+    ChatBot &operator=(ChatBot &other);
 
     // getters / setters
     void SetCurrentNode(GraphNode *node);

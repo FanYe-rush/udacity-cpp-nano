@@ -13,11 +13,9 @@
 #include "chatlogic.h"
 
 
-ChatLogic::ChatLogic()
-{
-}
+ChatLogic::ChatLogic() {}
 
-ChatLogic::~ChatLogic(){}
+ChatLogic::~ChatLogic() {}
 
 template <typename T>
 void ChatLogic::AddAllTokensToElement(std::string tokenID, tokenlist &tokens, T &element)
