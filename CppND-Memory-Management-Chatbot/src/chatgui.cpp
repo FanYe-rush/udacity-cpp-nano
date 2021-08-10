@@ -125,12 +125,7 @@ ChatBotPanelDialog::ChatBotPanelDialog(wxWindow *parent, wxWindowID id)
     _chatLogic->LoadAnswerGraphFromFile(dataPath + "src/answergraph.txt");
 }
 
-ChatBotPanelDialog::~ChatBotPanelDialog()
-{
-    if (_dialogSizer != NULL) {
-        delete _dialogSizer;
-    }
-}
+ChatBotPanelDialog::~ChatBotPanelDialog() {}
 
 void ChatBotPanelDialog::AddDialogItem(wxString text, bool isFromUser)
 {
